@@ -7,6 +7,6 @@ class NewCommand :public ICommand
 {
 public:
     ~ NewCommand();
-    void run(int argc, char **argv);
+    void run();
 };
 #endif //EXCELLENTEAM_ELLA_C_DNA_CHANAMI_NEW_H

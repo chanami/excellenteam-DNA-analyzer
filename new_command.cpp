@@ -6,7 +6,7 @@ NewCommand::~NewCommand()
     std::cout<<"NEW command dtor\n";
 }
 
-void NewCommand::run(int argc, char *argv[])
+void NewCommand::run()
 {
     std::cout<<"NEW command running\n";
 }
