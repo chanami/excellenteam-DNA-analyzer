@@ -4,16 +4,16 @@
 #include <iostream>
 
 template<typename T>
-class shared_ptr
+class SharedPtr
 {
 public :
 
-    explicit shared_ptr(T *ptr = NULL);
-    ~shared_ptr();
+    explicit SharedPtr(T *ptr = NULL);
+    ~SharedPtr();
 
-    shared_ptr(const shared_ptr &ptr);
-    shared_ptr& operator =(const shared_ptr &ptr);
-    shared_ptr& operator =(T*);
+    SharedPtr(const SharedPtr &ptr);
+    SharedPtr& operator =(const SharedPtr &ptr);
+    SharedPtr& operator =(T*);
 
 
     bool isvalid() const;
@@ -21,14 +21,14 @@ public :
     T* get() const;
 
     operator bool() const;
-    bool operator!=(const shared_ptr& other) const;
-    bool operator==(const shared_ptr& other) const;
+    bool operator!=(const SharedPtr& other) const;
+    bool operator==(const SharedPtr& other) const;
 
     template <class U>
-    shared_ptr(const shared_ptr<U>&pt);
+    SharedPtr(const SharedPtr<U>&pt);
 
     template <class U>
-    friend class shared_ptr;
+    friend class SharedPtr;
 
     T* operator ->() const;
     T& operator *() const;
@@ -38,12 +38,12 @@ private :
     T* m_ptr;
 
     void release();
-    void swap(shared_ptr &other);
+    void swap(SharedPtr &other);
 
 };
 
 template<typename T>
-shared_ptr<T>::shared_ptr(T *ptr)try :m_ptr(ptr)
+SharedPtr<T>::SharedPtr(T *ptr)try :m_ptr(ptr)
 {
     refCount = new size_t(1);
 }
@@ -54,7 +54,7 @@ catch (std::bad_alloc& e)
 }
 
 template<typename T>
-void shared_ptr<T>::release()
+void SharedPtr<T>::release()
 {
     if((*refCount) <= 0)
     {
@@ -64,7 +64,7 @@ void shared_ptr<T>::release()
 
 }
 template<typename T>
-shared_ptr<T>::~shared_ptr()
+SharedPtr<T>::~SharedPtr()
 {
     if(isvalid())
     {
@@ -76,30 +76,30 @@ shared_ptr<T>::~shared_ptr()
 }
 
 template<typename T>
-shared_ptr<T>::shared_ptr(const shared_ptr &ptr) : refCount(ptr.refCount), m_ptr(ptr.m_ptr)
+SharedPtr<T>::SharedPtr(const SharedPtr &ptr) : refCount(ptr.refCount), m_ptr(ptr.m_ptr)
 {
     if(isvalid())
         (*refCount)++;
 }
 
 template<typename T>
-void shared_ptr<T>::swap(shared_ptr &other)
+void SharedPtr<T>::swap(SharedPtr &other)
 {
     std::swap(m_ptr,other.m_ptr);
     std::swap(refCount,other.refCount);
 }
 
 template<typename T>
-shared_ptr<T>& shared_ptr<T>:: operator =(const shared_ptr &ptr)
+SharedPtr<T>& SharedPtr<T>:: operator =(const SharedPtr &ptr)
 {
-    shared_ptr<T> temp(ptr);
+    SharedPtr<T> temp(ptr);
     swap(temp);
 
     return *this;
 }
 
 template<typename T>
-shared_ptr<T>& shared_ptr<T>:: operator =(T* other)
+SharedPtr<T>& SharedPtr<T>:: operator =(T* other)
 {   //TODO release()
     //TODO try & catch with other
 
@@ -107,13 +107,13 @@ shared_ptr<T>& shared_ptr<T>:: operator =(T* other)
 }
 
 template<typename T>
-bool shared_ptr<T>::isvalid() const
+bool SharedPtr<T>::isvalid() const
 {
     return (m_ptr != NULL && refCount != NULL);
 }
 
 template<typename T>
-int shared_ptr<T>:: getCount() const
+int SharedPtr<T>:: getCount() const
 {
     if(refCount != NULL)
         return *refCount;
@@ -122,44 +122,44 @@ int shared_ptr<T>:: getCount() const
 }
 
 template<typename T>
-T* shared_ptr<T>::operator ->() const
+T* SharedPtr<T>::operator ->() const
 {
     return m_ptr;
 }
 
 template<typename T>
-T& shared_ptr<T>::operator *()const
+T& SharedPtr<T>::operator *()const
 {
     return *m_ptr;
 }
 
 template<typename T>
-bool shared_ptr<T>::operator==(const shared_ptr& other) const
+bool SharedPtr<T>::operator==(const SharedPtr& other) const
 {
     return (m_ptr==other.m_ptr)&&(refCount==other.refCount);
 }
 
 template<typename T>
-bool shared_ptr<T>:: operator!=(const shared_ptr& other) const
+bool SharedPtr<T>:: operator!=(const SharedPtr& other) const
 {
     return (m_ptr != other.m_ptr);
 }
 
 template<typename T>
-T * shared_ptr<T>:: get() const
+T * SharedPtr<T>:: get() const
 {
     return m_ptr;
 }
 
 template<typename T>
-shared_ptr<T>::operator bool()const
+SharedPtr<T>::operator bool()const
 {
     return dynamic_cast<T *>(get()) != NULL;
 }
 
 template<typename T>
 template<typename U>
-shared_ptr<T>::shared_ptr(const shared_ptr<U>& ptr)
+SharedPtr<T>::SharedPtr(const SharedPtr<U>& ptr)
         :refCount(ptr.refCount),
          m_ptr(ptr.m_ptr)
 {

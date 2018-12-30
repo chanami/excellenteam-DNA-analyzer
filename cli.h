@@ -1,37 +1,46 @@
 #ifndef EXCELLENTEAM_ELLA_C_DNA_CHANAMI_CLI_H
 #define EXCELLENTEAM_ELLA_C_DNA_CHANAMI_CLI_H
 
-#include <map>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
 #include "parser.h"
 
 typedef void (*CommandFunction)(int argc, char *argv[]) ; // function pointer type
-typedef std::map< char*, CommandFunction> command_map;
 
 class Cli
 {
 public:
-    ~Cli();
-    Cli * getInstance();
+
+    Cli(CommandFunction);
     void run();
+
+    ~Cli();
+
+private:
+
+    char  m_line[1024];
+    int  m_argc;
+    char * m_argv[20];
+    Parser m_parser;
+    CommandFunction  m_comFun;
+
     inline void readLine();
     inline bool parseCommand();
     inline void callCommand();
-
-private:
-    static commandMap m_command_map
-
-    char * m_line;
-    int * m_argc;
-    char ** m_argv;
-    Parser m_parser;
-
-    Cli();
-    Cli(const Cli &);
-    void operator = (const Cli &);
-
-
-
-
 };
 
+inline void Cli::readLine()
+{
+    fgets(m_line, sizeof(m_line), stdin);
+}
+inline bool Cli::parseCommand()
+{
+    m_parser.parseString(m_line,&m_argc,m_argv);
+    return 1;
+}
+inline void Cli::callCommand()
+{
+    m_comFun(m_argc,m_argv);
+}
 #endif //EXCELLENTEAM_ELLA_C_DNA_CHANAMI_CLI_H
