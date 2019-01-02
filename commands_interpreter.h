@@ -3,9 +3,13 @@
 
 #include "cli.h"
 #include "new_command.h"
+#include "print.h"
+#include "data_controller.h"
 #include "iCommand.h"
 #include <iostream>
 #include <map>
+
+typedef void (*CommandFunction)(int argc, char **argv) ; // function pointer type
 
 class CommandInterpreter
 {
@@ -15,12 +19,14 @@ public:
     ~CommandInterpreter();
 
     void run();
-    static void executeCommand(int argc, char *argv[]);
+    void executeCommand();
 
 private:
 
-    Cli * m_cli;
+    Cli  m_cli;
     static std::map<char * , CommandFunction > commandsMap;
+    s_args * m_args;
+    DataController m_dataController;
 
 };
 #endif //EXCELLENTEAM_ELLA_C_DNA_CHANAMI_INTERPTER_H

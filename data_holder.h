@@ -9,31 +9,34 @@
 
 typedef SharedPtr<IDna> IDnaPtr;
 
-typedef struct
-{
-    int id;
-    char* name;
-} IDnaIndexer;
-
 class DataHolder
 {
 public:
-    DataHolder();
-    ~DataHolder();
+    DataHolder(){};
+    //~DataHolder(){};
 
-    inline bool addDnaById(IDnaPtr dna ,char * identifier);
-    inline bool addDnaByName(IDnaPtr dna ,char * identifier);
+    void addDna(int idIdentifier, char* nameIdentifier,IDnaPtr dna);
+
+    inline void addDnaById(IDnaPtr dna ,int idIdentifier);
+    inline void addDnaByName(IDnaPtr dna ,char * nameIdentifier);
 
     inline IDnaPtr loadDnaById(char * identifier);
     inline IDnaPtr loadDnaByName(char * identifier);
 
-    inline bool deleteDnaById(IDnaPtr dna ,char * identifier);
-    inline bool deleteDnaByName(IDnaPtr dna ,char * identifier);
+    inline bool deleteDna(char * identifier);
 
 
 private:
-    static std::map<IDnaIndexer, IDnaPtr > mapDnaByName;
-
+    std::map<int, IDnaPtr > mapDnaById;
+    std::map<char*, IDnaPtr > mapDnaByName;
 };
+void DataHolder::addDnaById(IDnaPtr dnaSeq ,int idIdentifier)
+{
+    mapDnaById.insert( std::pair<int, IDnaPtr>(idIdentifier, dnaSeq) );
+}
 
+void DataHolder::addDnaByName(IDnaPtr dnaSeq ,char * nameIdentifier)
+{
+    mapDnaByName.insert( std::pair<char *, IDnaPtr>(nameIdentifier, dnaSeq) );
+}
 #endif //EXCELLENTEAM_ELLA_C_DNA_CHANAMI_DATA_HOLDER_H

@@ -1,22 +1,34 @@
 #include "commands_interpreter.h"
 #include <cstring>
 #include <iostream>
+
 CommandInterpreter::CommandInterpreter()
 {
-    m_cli =new Cli(&executeCommand);
+    m_args = new s_args();
 }
 
 void CommandInterpreter::run()
 {
-    m_cli->run();
+    while(1)
+    {
+        m_cli.run(m_args);
+        executeCommand();
+    }
 }
 
-void CommandInterpreter::executeCommand(int argc, char *argv[])
+void CommandInterpreter::executeCommand()
 {
-    if(strcmp(argv[0],"new") == 0)
+
+    if(strcmp(m_args->s_argv[0],"new") == 0)
     {
         ICommand* newCom = new NewCommand();
-        newCom->run();
+        newCom->run(m_args->s_argc, m_args->s_argv, m_dataController);
+    }
+
+    if(strcmp(m_args->s_argv[0],"print") == 0)
+    {
+        ICommand* printCom = new PrintCommand();
+        printCom->run(m_args->s_argc, m_args->s_argv, m_dataController);
     }
 
 }

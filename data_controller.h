@@ -8,12 +8,13 @@
 class DataController
 {
 public:
-    DataController();
-    ~DataController();
+    //DataController(){};
+    //~DataController();
 
-    bool addDna(char * dna ,char * identifier);
-    IDnaPtr loadDna(char * identifier);
-    bool deleteDna(IDnaPtr dna ,char * identifier);
+    void addDna(IDnaPtr idnaP ,char * nameIdentifier,int idIdentifier);
+
+    IDnaPtr loadDna(char * nameIdentifier,int idIdentifier);
+    bool deleteDna(char * nameIdentifier,int idIdentifier);
 
 private:
     DataHolder m_dataHolder;

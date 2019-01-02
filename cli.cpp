@@ -1,18 +1,16 @@
 #include "cli.h"
 #include <iostream>
 
-Cli::Cli(CommandFunction cbf)
+void Cli::run(s_args * args)
 {
-    m_comFun = cbf;
-}
+    std::cout<<"DNA-CLI>>>> ";
+    readLine();
+    parseCommand();
 
-void Cli::run()
+    args->s_argc = m_argc;
+    args->s_argv = m_argv;
+}
+Cli::~Cli()
 {
-    while (1)
-    {
-        std::cout<<"cli run\n";
-        readLine();
-        parseCommand();
-        callCommand();
-    }
+    //destructor
 }
