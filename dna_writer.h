@@ -1,16 +1,26 @@
 #ifndef EXCELLENTEAM_ELLA_C_DNA_CHANAMI_DNA_WRITER_H
 #define EXCELLENTEAM_ELLA_C_DNA_CHANAMI_DNA_WRITER_H
 
-#include "IDna.h"
+#include "iDna.h"
 #include <string>
+#include <iostream>
+#include <fstream>
+#include "shared_ptr.h"
 
-class DNAWriter
+typedef SharedPtr<IDna> IDnaPtr;
+
+
+class DnaWriter
 {
 public:
-    DNAWriter(std::string file_name, const IDna &dna);
+
+    DnaWriter(std::string file_name, IDnaPtr dna);
+    void write();
+
 private:
-   IDna m_dna;
-   std::string file_name;
+   IDnaPtr m_dna;
+   std::ofstream m_write;
+   std::string m_filename;
 
 };
 #endif //EXCELLENTEAM_ELLA_C_DNA_CHANAMI_DNA_WRITER_H

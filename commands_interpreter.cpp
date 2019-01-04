@@ -30,6 +30,11 @@ void CommandInterpreter::executeCommand()
         ICommand* printCom = new PrintCommand();
         printCom->run(m_args->s_argc, m_args->s_argv, m_dataController);
     }
+    if(strcmp(m_args->s_argv[0],"save") == 0)
+    {
+        ICommand* saveCom = new SaveCommand();
+        saveCom->run(m_args->s_argc, m_args->s_argv, m_dataController);
+    }
 
 }
 
