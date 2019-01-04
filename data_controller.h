@@ -4,17 +4,19 @@
 
 
 #include "data_holder.h"
-
+#include <iostream>
 class DataController
 {
 public:
     //DataController(){};
     //~DataController();
 
-    void addDna(IDnaPtr idnaP ,char * nameIdentifier,int idIdentifier);
+    void addDna(IDnaPtr idnaP ,std::string nameIdentifier,int idIdentifier);
 
-    IDnaPtr loadDna(char * nameIdentifier,int idIdentifier);
-    bool deleteDna(char * nameIdentifier,int idIdentifier);
+    IDnaPtr loadDnaById(int idIdentifier);
+    IDnaPtr loadDnaByName(std::string nameIdentifier);
+
+    bool deleteDna(std::string nameIdentifier,int idIdentifier);
 
 private:
     DataHolder m_dataHolder;

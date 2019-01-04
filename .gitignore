@@ -1,3 +1,6 @@
 a.out
 .idea/
 *.gch
+*.o
+.depends
+dna
