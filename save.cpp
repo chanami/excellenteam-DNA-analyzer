@@ -17,7 +17,6 @@ void SaveCommand::run(int argc, char **argv, DataController &m_DataController)
 
         else
         {
-            std::cout<<"save function\n";
 
             char * tmp = argv[1];
             IDnaPtr idna;
@@ -32,11 +31,11 @@ void SaveCommand::run(int argc, char **argv, DataController &m_DataController)
                 dnaId = static_cast<size_t>(atoi(++tmp));
                 idna = m_DataController.loadDnaById(dnaId);
             }
+
             if(argc == 3)
                 fileName = argv[2];
             else
                 fileName = idna->getName() + ".rawdna";
-            std::cout<<"file name"<<fileName<<"\n";
 
             DnaWriter dnaWriter(fileName,idna);
             dnaWriter.write();

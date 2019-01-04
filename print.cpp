@@ -23,7 +23,6 @@ void PrintCommand::run(int argc, char **argv, DataController &m_DataController)
 
     else
     {
-
         if((argv[1][0] != '@') && (argv[1][0] != '#'))
             std::cout<<"Id must start with # , Name must start with @  \n";
 
@@ -32,7 +31,6 @@ void PrintCommand::run(int argc, char **argv, DataController &m_DataController)
             char * tmp = argv[1];
             if(argv[1][0] == '@')
             {
-
                 IDnaPtr idna = m_DataController.loadDnaByName(++tmp);
                 printSeq(idna);
             }
