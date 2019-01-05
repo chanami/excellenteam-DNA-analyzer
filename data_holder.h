@@ -24,7 +24,11 @@ public:
     inline IDnaPtr loadDnaById(int identifier);
     inline IDnaPtr loadDnaByName(std::string identifier);
 
+    inline bool checkIfNameExist(char *);
+
     inline bool deleteDna(std::string identifier);
+
+    void showList();
 
 
 private:
@@ -38,11 +42,7 @@ void DataHolder::addDnaById(IDnaPtr dnaSeq ,int idIdentifier)
 
 void DataHolder::addDnaByName(IDnaPtr dnaSeq ,std::string nameIdentifier)
 {
-    std::cout<<"name is -add ---"<<nameIdentifier<<"\n";
-    std::cout<<"dna  is -length ---"<<dnaSeq->getDNALength()<<"\n";
-
     mapDnaByName.insert(std::pair<std::string, IDnaPtr>(nameIdentifier, dnaSeq));
-
 }
 IDnaPtr DataHolder::loadDnaById(int identifier)
 {
@@ -62,4 +62,9 @@ IDnaPtr DataHolder::loadDnaByName(std::string nameIdentifier)
 
     return itr;
 }
+bool DataHolder::checkIfNameExist(char * key)
+{
+    return mapDnaByName.find(key) == mapDnaByName.end();
+}
+
 #endif //EXCELLENTEAM_ELLA_C_DNA_CHANAMI_DATA_HOLDER_H

@@ -11,7 +11,6 @@ IDnaPtr DataController::loadDnaById(int idIdentifier)
 }
 IDnaPtr DataController::loadDnaByName(std::string nameIdentifier)
 {
-    //std::cout<<"name is ----DCTRL---"<<nameIdentifier<<"\n";
 
     IDnaPtr temp = m_dataHolder.loadDnaByName(nameIdentifier);
     return temp;

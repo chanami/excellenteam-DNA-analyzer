@@ -10,14 +10,14 @@ class DNASequence : public IDna
 {
 public:
 //    DNASequence(){};
-    explicit DNASequence(const char* const,char *);
+     DNASequence(const char* const, std::string);
     ~DNASequence();
 
     long getDNALength() const;
     Nucleotide operator[](int index) const;
 
     inline void setId();
-    inline void setName(char *);
+    inline void setName(std::string);
 
 
 private:
@@ -32,11 +32,11 @@ inline void DNASequence::setId()
 {
     m_dnaId = ++m_dnasCounter;
 }
-inline void DNASequence::setName(char * dnaNAme)
+inline void DNASequence::setName(std::string dnaName)
 {
-    if(dnaNAme)
+    if(dnaName != "")
     {
-        m_dnaName = dnaNAme;
+        m_dnaName = dnaName;
     }
     else
     {

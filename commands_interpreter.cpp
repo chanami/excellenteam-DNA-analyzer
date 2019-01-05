@@ -35,7 +35,11 @@ void CommandInterpreter::executeCommand()
         ICommand* saveCom = new SaveCommand();
         saveCom->run(m_args->s_argc, m_args->s_argv, m_dataController);
     }
-
+    if(strcmp(m_args->s_argv[0],"load") == 0)
+    {
+        ICommand* loadCom = new LoadCommand();
+        loadCom->run(m_args->s_argc, m_args->s_argv, m_dataController);
+    }
 }
 
 CommandInterpreter::~CommandInterpreter()

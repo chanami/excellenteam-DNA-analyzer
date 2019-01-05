@@ -4,7 +4,7 @@
 
 size_t DNASequence::IDna::m_dnasCounter = 0;
 
-DNASequence::DNASequence(const char* const dnaSeq, char* dnaName )
+DNASequence::DNASequence(const char* const dnaSeq, std::string dnaName )
 {
     m_seq = NULL;
 

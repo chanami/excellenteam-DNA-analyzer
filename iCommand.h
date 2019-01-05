@@ -3,7 +3,6 @@
 
 #include "shared_ptr.h"
 #include "dna.h"
-#include "iDna.h"
 #include "data_controller.h"
 
 typedef SharedPtr<IDna> IDnaPtr;

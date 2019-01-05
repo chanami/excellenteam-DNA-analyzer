@@ -4,6 +4,7 @@
 #include "cli.h"
 #include "new_command.h"
 #include "print.h"
+#include "load.h"
 #include "save.h"
 #include "data_controller.h"
 #include "iCommand.h"

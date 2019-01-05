@@ -1,6 +1,6 @@
 #include "dna_reader.h"
 
-std::string dneReader::readSeqFromFile(std::string fileName)
+std::string DneReader::readSeqFromFile(std::string fileName)
 {
     std::filebuf fb;
 
@@ -13,4 +13,9 @@ std::string dneReader::readSeqFromFile(std::string fileName)
     fb.close();
 
     return  seq;
+}
+bool DneReader::fileIsExist(const char * fileName)
+{
+    std::ifstream infile(fileName);
+    return infile.good();
 }

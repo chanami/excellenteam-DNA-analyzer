@@ -3,18 +3,19 @@
 
 #include "dna_reader.h"
 #include "iDna.h"
-#include "icommand.h"
+#include "iCommand.h"
+#include <iostream>
 
-class LoadCommand : public Icommand
+class LoadCommand : public ICommand
 {
 public:
 
     ~LoadCommand();
-    void run(int argc, char ** argv, memoryCtrl &);
+    void run(int argc, char** argv, DataController & m_DataController);
 
 private:
 
-    dneReader m_dnaReader;
+    DneReader m_dnaReader;
 
 };
 

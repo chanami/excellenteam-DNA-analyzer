@@ -4,11 +4,13 @@
 #include <iostream>
 #include <fstream>
 
-class dneReader
+class DneReader
 {
 public:
 
     std::string readSeqFromFile(std::string fileName);
+    bool fileIsExist(const char * fileName);
+
 };
 
 
