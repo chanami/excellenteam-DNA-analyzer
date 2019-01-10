@@ -2,6 +2,8 @@
 #define EXCELLENTEAM_ELLA_C_DNA_CHANAMI_PAIR_H
 
 #include "iCommand.h"
+#include "pair_dna.h"
+
 class PairCommand :public ICommand
 {
 public:
