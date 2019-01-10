@@ -13,11 +13,14 @@ public:
      DNASequence(const char* const, std::string);
     ~DNASequence();
 
-    long getDNALength() const;
+    unsigned long getDNALength() const;
     Nucleotide operator[](int index) const;
 
     inline void setId();
     inline void setName(std::string);
+
+    inline std::string getName() const;
+    inline int getId() const;
 
 
 private:
@@ -51,6 +54,13 @@ inline void DNASequence::setName(std::string dnaName)
     }
 
 }
-
+inline std::string DNASequence::getName() const
+{
+    return m_dnaName;
+}
+inline int DNASequence::getId()const
+{
+    return m_dnaId;
+}
 
 #endif //EXCELLENTEAM_ELLA_C_DNA_CHANAMI_DNA_H

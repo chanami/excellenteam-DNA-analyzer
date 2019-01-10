@@ -54,7 +54,7 @@ void DNASequence::init_sequence(const char* const dnaSeq)
     }
 }
 
-long DNASequence::getDNALength() const
+unsigned long DNASequence::getDNALength() const
 {
     return m_seqLength;
 }

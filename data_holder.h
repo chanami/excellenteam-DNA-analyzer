@@ -34,6 +34,7 @@ public:
 private:
     std::map<int, IDnaPtr > mapDnaById;
     std::map<std::string, IDnaPtr > mapDnaByName;
+
 };
 void DataHolder::addDnaById(IDnaPtr dnaSeq ,int idIdentifier)
 {

@@ -18,6 +18,7 @@ public:
 
     inline bool checkIfNameExist(char* key);
     bool deleteDna(std::string nameIdentifier,int idIdentifier);
+    void showList();
 
 
 private:

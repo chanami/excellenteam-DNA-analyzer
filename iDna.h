@@ -4,6 +4,7 @@
 #include "nucleotide.h"
 #include <iostream>
 #include <string>
+#define DefaultName "seq"
 
 class IDna
 {
@@ -11,11 +12,11 @@ public:
 
     virtual ~IDna(){};
 
-    virtual long getDNALength() const = 0;
+    virtual unsigned long getDNALength() const = 0;
     virtual Nucleotide operator[](int)const = 0;
 
-    inline std:: string getName();
-    inline int getId();
+    virtual std:: string getName()const =0;
+    virtual int getId() const = 0;
 
 protected:
 
@@ -24,12 +25,5 @@ protected:
     int m_dnaId;
 
 };
-std::string IDna::getName()
-{
-    return m_dnaName;
-}
-int IDna::getId()
-{
-    return m_dnaId;
-}
+
 #endif //EXCELLENTEAM_ELLA_C_DNA_CHANAMI_IDNA_H

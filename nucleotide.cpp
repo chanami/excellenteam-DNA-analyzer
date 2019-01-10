@@ -38,3 +38,25 @@ void Nucleotide::check_if_valid(char c_to_check)
     if (c_to_check != 'A' && c_to_check != 'G' && c_to_check != 'T' && c_to_check != 'C')
         throw std::invalid_argument("received invalid value");
 }
+
+char Nucleotide::flip()
+{
+    try {
+        switch (m_singleNucleotide) {
+            case 'A':
+                return 'T';
+            case 'C':
+                return 'G';
+            case 'G':
+                return 'C';
+            case 'T':
+                return 'A';
+            default:
+                throw std::invalid_argument("invalid_argument");
+        }
+    }
+    catch(std::invalid_argument){
+
+        throw std::invalid_argument("invalid_argument");
+    }
+}
