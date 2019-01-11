@@ -4,6 +4,7 @@
 #include "cli.h"
 #include "pair.h"
 #include "show_list.h"
+#include "dup_command.h"
 #include "new_command.h"
 #include "print.h"
 #include "load.h"

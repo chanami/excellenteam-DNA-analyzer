@@ -53,6 +53,11 @@ void CommandInterpreter::executeCommand()
         ICommand* pairCom = new PairCommand();
         pairCom->run(m_args->s_argc, m_args->s_argv, m_dataController);
     }
+    else if(strcmp(m_args->s_argv[0],"dup") == 0)
+    {
+        ICommand* dupCom = new DupCommand();
+        dupCom->run(m_args->s_argc, m_args->s_argv, m_dataController);
+    }
 }
 
 CommandInterpreter::~CommandInterpreter()
