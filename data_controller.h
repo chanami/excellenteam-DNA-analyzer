@@ -11,7 +11,7 @@ public:
     //DataController(){};
     //~DataController();
 
-    void addDna(IDnaPtr idnaP ,std::string nameIdentifier,int idIdentifier);
+    void addDna(IDnaPtr idnaP ,std::string nameIdentifier, int idIdentifier);
 
     IDnaPtr loadDnaById(int idIdentifier);
     IDnaPtr loadDnaByName(std::string nameIdentifier);

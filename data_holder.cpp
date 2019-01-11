@@ -18,12 +18,14 @@ void printSeq(IDnaPtr dna)
 
 void DataHolder::showList()
 {
-//    map<string, pair<string,IDnaPtr> >::const_iterator seqByName = mapDnaByName.begin();
-//    if(seqByName == mapDnaByName.end())
-//    {
-//        std::cout << "The list is empty :(" << std::endl;
-//    }
-//
-//    for ( ; seqByName != mapDnaByName.end(); ++seqByName)
-//        printSeq(seqByName->second);
+//    std::cout << "im in showList data holder" << std::endl;
+
+    std::map<std::string, IDnaPtr>::iterator seqByName = mapDnaByName.begin();
+    if(seqByName == mapDnaByName.end())
+    {
+        std::cout << "The list is empty :(" << std::endl;
+    }
+
+    for ( ; seqByName != mapDnaByName.end(); ++seqByName)
+        printSeq(seqByName->second);
 }

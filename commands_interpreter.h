@@ -2,6 +2,8 @@
 #define EXCELLENTEAM_ELLA_C_DNA_CHANAMI_INTERPTER_H
 
 #include "cli.h"
+#include "pair.h"
+#include "show_list.h"
 #include "new_command.h"
 #include "print.h"
 #include "load.h"

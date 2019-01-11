@@ -1,7 +1,9 @@
 #include "print.h"
 
-void printSeq(IDnaPtr dna)
+void printSeqFun(IDnaPtr dna)
 {
+    std::cout<<"printSeqFun "<<dna<<"\n";
+
     size_t size = dna->getDNALength();
     std::cout << "[" << dna->getId() << "] " << dna->getName() << ": ";
     for(size_t i = 0; i<size; ++i)
@@ -32,14 +34,18 @@ void PrintCommand::run(int argc, char **argv, DataController &m_DataController)
             if(argv[1][0] == '@')
             {
                 IDnaPtr idna = m_DataController.loadDnaByName(++tmp);
-                printSeq(idna);
+                printSeqFun(idna);
             }
             else
             {
+                std::cout << "im in print #" << std::endl;
+
                 int dnaId;
                 dnaId = static_cast<size_t>(atoi(++tmp));
+                std::cout << "id is #" << dnaId <<std::endl;
+
                 IDnaPtr idna = m_DataController.loadDnaById(dnaId);
-                printSeq(idna);
+                printSeqFun(idna);
 
             }
         }

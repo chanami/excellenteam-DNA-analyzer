@@ -1,6 +1,13 @@
 #include "pair_dna.h"
 #include <sstream>
 
+
+
+PairDna::~PairDna()
+{
+    std::cout<< "PairDna dtor";
+}
+
 void PairDna::setDefaultName()
 {
     std::stringstream ss;
@@ -15,8 +22,10 @@ void PairDna::setDefaultName()
 
 PairDna::PairDna(SharedPtr<IDna> pairDna, std::string name)
 {
+    std::cout << "im in pairdna ctor" << std::endl;
+
     m_dna = pairDna;
-    m_dnaId = m_dnasCounter++;
+    m_dnaId = ++m_dnasCounter;
 
     if(name.compare(""))
         m_dnaName = name;

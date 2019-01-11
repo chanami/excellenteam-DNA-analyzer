@@ -18,7 +18,7 @@ public:
 
     void addDna(int idIdentifier, std::string nameIdentifier,IDnaPtr dna);
 
-    inline void addDnaById(IDnaPtr dna ,int idIdentifier);
+    inline void addDnaById(IDnaPtr dna, int idIdentifier);
     inline void addDnaByName(IDnaPtr dna ,std::string nameIdentifier);
 
     inline IDnaPtr loadDnaById(int identifier);
@@ -36,7 +36,7 @@ private:
     std::map<std::string, IDnaPtr > mapDnaByName;
 
 };
-void DataHolder::addDnaById(IDnaPtr dnaSeq ,int idIdentifier)
+void DataHolder::addDnaById(IDnaPtr dnaSeq, int idIdentifier )
 {
     mapDnaById.insert( std::pair<int, IDnaPtr>(idIdentifier, dnaSeq) );
 }
@@ -47,6 +47,12 @@ void DataHolder::addDnaByName(IDnaPtr dnaSeq ,std::string nameIdentifier)
 }
 IDnaPtr DataHolder::loadDnaById(int identifier)
 {
+    std::cout<<"loadDnaById "<<identifier<<"\n";
+        std::cout<<"\n---MY MAP---\n";
+
+    for (std::map<int,IDnaPtr>::iterator it=mapDnaById.begin(); it!=mapDnaById.end(); ++it)
+        std::cout << it->first << " => " << it->second << '\n';
+
     IDnaPtr itr = mapDnaById.find(identifier)->second;
 
     return itr;

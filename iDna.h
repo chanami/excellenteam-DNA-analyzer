@@ -15,6 +15,9 @@ public:
     virtual unsigned long getDNALength() const = 0;
     virtual Nucleotide operator[](int)const = 0;
 
+    virtual void setName(std::string) = 0;
+    virtual void setId() = 0;
+
     virtual std:: string getName()const =0;
     virtual int getId() const = 0;
 

@@ -8,7 +8,7 @@ PairCommand::~PairCommand()
 IDnaPtr getDnaByIdentifier(int argc, char **argv, DataController &m_DataController)
 {
     if(argc != 2)
-        std::cout<<"In order to Print we need one identifier: Id/Name  \n";
+        std::cout<<"In order to get a Dna sequence  we need one identifier: Id/Name  \n";
 
     else
     {
@@ -33,16 +33,43 @@ IDnaPtr getDnaByIdentifier(int argc, char **argv, DataController &m_DataControll
             }
         }
     }
+    return IDnaPtr();
+}
+std::string getNameForPairSeq(int argc, char **argv, DataController &m_DataController)
+{
+//    if(argc == 3)
+//    {
+//        if((argv[2][0] != '@') && (argv[2][0] != '@@'))
+//        {
+//            std::cout<<"Name must start with @, auto name starts with @@  \n";
+//            return "error";
+//        }
+//        else
+//        {
+//            char * tmp = argv[1];
+//            if(argv[2][0] == '@')
+//                return ++tmp;
+//            else
+//            {
+//                return "default_name";
+//
+//            }
+//        }
+//    }
+    return "stop";
 }
 void PairCommand::run(int argc, char **argv, DataController &m_DataController)
 {
-    IDnaPtr dnaPtr;
-    dnaPtr = getDnaByIdentifier(argc,argv,m_DataController);
 
-     
-    //get pair
-    //create name for idna (default name ---org_pair1 ...org_pair2)
-    //create idna
-    //print idna
-    pairDna =PairDna();
+//    std::cout << "im in pair command run" << std::endl;
+
+    IDnaPtr dnaPtr = getDnaByIdentifier(argc,argv,m_DataController);
+
+    //std::string dnaName =getDnaByIdentifier(argc,argv,m_DataController)
+    std::string dnaName = "new_pair";
+
+    IDnaPtr pairSeq(new PairDna(dnaPtr,dnaName));
+//    std::cout << "im in pair id" <<pairSeq->getId() <<std::endl;
+
+    m_DataController.addDna(pairSeq,dnaName,pairSeq->getId());
 }

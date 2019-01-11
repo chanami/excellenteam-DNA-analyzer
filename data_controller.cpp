@@ -1,7 +1,7 @@
 
 #include "data_controller.h"
 
-void DataController::addDna(IDnaPtr dnaP, std::string nameIdentifier, int idIdentifier)
+void DataController::addDna(IDnaPtr dnaP, std::string nameIdentifier,int idIdentifier)
 {
     m_dataHolder.addDna(idIdentifier,nameIdentifier,dnaP);
 }
@@ -20,5 +20,6 @@ IDnaPtr DataController::loadDnaByName(std::string nameIdentifier)
 }
 void DataController::showList()
 {
+//    std::cout << "im in showList data ctrl" << std::endl;
     m_dataHolder.showList();
 }

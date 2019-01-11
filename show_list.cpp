@@ -8,5 +8,6 @@ ShowListCommand::~ShowListCommand()
 
 void ShowListCommand::run(int argc, char ** argv, DataController & m_DataController)
 {
+    std::cout << "im in showList command" << std::endl;
     m_DataController.showList();
 }

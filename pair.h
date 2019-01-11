@@ -3,6 +3,8 @@
 
 #include "iCommand.h"
 #include "pair_dna.h"
+#include <cstdlib>
+#include <cstring>
 
 class PairCommand :public ICommand
 {
